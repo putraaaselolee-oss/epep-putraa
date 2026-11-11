@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF FULL SKIN</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #10131d;
+  color: white;
+}
+
+header {
+  background: linear-gradient(90deg,#e65b13,#9c1c12);
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 27px;
+  color: white;
+}
+
+.profile {
+  margin: 15px;
+  padding: 18px;
+  background: #222938;
+  border-radius: 12px;
+}
+
+.profile h2 {
+  color: #ffb52e;
+}
+
+.coins {
+  color: #ffd34d;
+  margin-top: 8px;
+}
+
+h3 {
+  margin: 18px 15px 10px;
+  color: #ffad32;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+  padding: 15px;
+}
+
+.menu button {
+  background: #242d40;
+  color: white;
+  border: 1px solid #ff9b25;
+  padding: 17px 5px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.menu button:active {
+  background: #a34216;
+}
+
+#items {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+  padding: 15px;
+}
+
+.item {
+  background: #222938;
+  border-radius: 12px;
+  padding: 15px 8px;
+  text-align: center;
+}
+
+.item .emoji {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+.item button {
+  background: #ed7b1c;
+  color: white;
+  border: none;
+  padding: 9px;
+  border-radius: 7px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🔥 FF FULL SKIN</h1>
+  <p>ULTIMATE COLLECTION SIMULATOR</p>
+</header>
+
+<div class="profile">
+  <h2>PLAYER PROFILE</h2>
+  <p>Nickname: PLAYER FF</p>
+  <p>ID: 123456789</p>
+  <p class="coins">💎 999999 Diamonds (simulasi)</p>
+</div>
+
+<h3>📦 MENU INVENTARIS</h3>
+
+<div class="menu">
+  <button onclick="showItems('Bundle')">👕 Bundle</button>
+  <button onclick="showItems('Senjata')">🔫 Skin Senjata</button>
+  <button onclick="showItems('Evo Gun')">⚡ Evo Gun</button>
+  <button onclick="showItems('Emote')">💃 Emote</button>
+  <button onclick="showItems('Gloo Wall')">🧊 Gloo Wall</button>
+  <button onclick="showItems('Karakter')">🧑 Karakter</button>
+  <button onclick="showItems('Pet')">🐾 Pet</button>
+  <button onclick="showItems('Lainnya')">🎒 Tas & Helm</button>
+</div>
+
+<h3 id="category">🔥 KOLEKSI SKIN</h3>
+
+<div id="items"></div>
+
+<footer>
+  FF FULL SKIN SIMULATOR<br>
+  Fan-made project - Bukan aplikasi resmi Garena
+</footer>
+
+<script>
+const data = {
+  "Bundle": [
+    ["🥷","Ninja Bundle"],
+    ["👑","Royal Bundle"],
+    ["🦸","Hero Bundle"],
+    ["🔥","Legendary Outfit"]
+  ],
+  "Senjata": [
+    ["🔫","AK47 Skin"],
+    ["🎯","AWM Skin"],
+    ["💥","MP40 Skin"],
+    ["⚔️","M1887 Skin"]
+  ],
+  "Evo Gun": [
+    ["🐉","Evo Dragon"],
+    ["🔥","Evo Flame"],
+    ["⚡","Evo Lightning"],
+    ["💀","Evo Skull"]
+  ],
+  "Emote": [
+    ["💃","Dance Emote"],
+    ["🕺","Victory Dance"],
+    ["👏","Clap Emote"],
+    ["🤸","Special Emote"]
+  ],
+  "Gloo Wall": [
+    ["🧊","Gloo Ice"],
+    ["🐲","Gloo Dragon"],
+    ["🔥","Gloo Flame"],
+    ["💎","Gloo Diamond"]
+  ],
+  "Karakter": [
+    ["🧑","Character 1"],
+    ["👩","Character 2"],
+    ["🦸","Character 3"],
+    ["🥷","Character 4"]
+  ],
+  "Pet": [
+    ["🐱","Pet Cat"],
+    ["🐼","Pet Panda"],
+    ["🐶","Pet Dog"],
+    ["🦊","Pet Fox"]
+  ],
+  "Lainnya": [
+    ["🎒","Tas Legendary"],
+    ["🪖","Helm Level 3"],
+    ["👟","Sepatu Skin"],
+    ["🕶️","Kacamata"]
+  ]
+};
+
+function showItems(category) {
+  document.getElementById("category").innerText =
+    "🔥 KOLEKSI " + category.toUpperCase();
+
+  const container = document.getElementById("items");
+  container.innerHTML = "";
+
+  data[category].forEach(item => {
+    const card = document.createElement("div");
+    card.className = "item";
+
+    const emoji = document.createElement("div");
+    emoji.className = "emoji";
+    emoji.textContent = item[0];
+
+    const name = document.createElement("p");
+    name.textContent = item[1];
+
+    const button = document.createElement("button");
+    button.textContent = "PREVIEW";
+    button.onclick = () => preview(item[1]);
+
+    card.append(emoji, name, button);
+    container.appendChild(card);
+  });
+}
+
+function preview(name) {
+  alert("Preview koleksi: " + name +
+    "\nIni hanya simulasi, bukan item akun FF asli.");
+}
+
+showItems("Bundle");
+</script>
+
+</body>
+</html>
